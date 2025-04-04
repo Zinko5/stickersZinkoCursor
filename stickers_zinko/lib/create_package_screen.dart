@@ -63,6 +63,23 @@ class _CreatePackageScreenState extends State<CreatePackageScreen> {
     Navigator.pop(context, package);
   }
 
+  Future<void> _exportToWhatsApp() async {
+    try {
+      // Aquí iría la lógica para exportar el paquete a WhatsApp
+      // Esto podría incluir empaquetar los stickers y usar un Intent en Android
+
+      // Simulación de éxito
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Exportación a WhatsApp exitosa')),
+      );
+    } catch (e) {
+      // Manejo de errores
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Algo falló')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,6 +160,11 @@ class _CreatePackageScreenState extends State<CreatePackageScreen> {
                     ElevatedButton(
                       onPressed: _createPackage,
                       child: Text(widget.packageToEdit != null ? 'Guardar Cambios' : 'Crear Paquete'),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: _exportToWhatsApp,
+                      child: const Text('Exportar a WhatsApp'),
                     ),
                   ],
                 ),
